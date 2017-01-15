@@ -1,0 +1,13 @@
+---
+- hosts: dedibox
+  roles:
+    - role: transmission
+      become: true
+      transmission_user: mrshoki
+      transmission_password: transmission
+      transmission_rpc_auth_required: true
+      transmission_rpc_whitelist_enabled: false
+      transmission_rpc_whitelist: "127.0.0.1,90.66.144.23"
+      dht-enabled: false
+      lpd_enabled: false
+      pex_enabled: false
