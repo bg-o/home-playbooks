@@ -1,0 +1,5 @@
+# From galaxy 
+- src: elboletaire.transmission
+  name: transmission
+- src: jdauphant.nginx
+  name: nginx
