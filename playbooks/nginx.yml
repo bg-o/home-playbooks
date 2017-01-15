@@ -1,0 +1,24 @@
+- hosts: all
+  roles:
+  - role: nginx
+    sudo: true
+    #become_user: "mrshoki"
+    #become_role: sudo
+    nginx_user: "mrshoki"
+    nginx_sites:
+      transmission:
+        - listen 80
+        - server_name localhost
+        - location /transmission { proxy_pass http://transmission; }
+
+# - upstream {     
+# transmission:
+#    template: rp.conf.j2
+#    server_name: transmission
+
+    nginx_configs:
+      proxy:
+        - proxy_set_header X-Real-IP  $remote_addr
+        - proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for
+      upstream:
+        - upstream transmission { server 127.0.0.1:9091; }
