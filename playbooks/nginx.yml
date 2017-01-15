@@ -6,10 +6,18 @@
     #become_role: sudo
     nginx_user: "mrshoki"
     nginx_sites:
-      transmission:
+      rp:
         - listen 80
-        - server_name localhost
+        - server_name mrshokbox
+        - location / {
+          root "/home/mrshoki/downloads";
+          autoindex on;
+          sendfile on;
+          auth_basic "Restricted";
+          auth_basic_user_file  auth_basic/mybo;
+          }
         - location /transmission { proxy_pass http://transmission; }
+
 
 # - upstream {     
 # transmission:
@@ -22,3 +30,9 @@
         - proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for
       upstream:
         - upstream transmission { server 127.0.0.1:9091; }
+
+
+    nginx_auth_basic_files:
+      mybo:
+      - boris:$apr1$yc932p2e$e6SbO/FAfX3DXBkZfn6tU1
+      - myriam:$apr1$RN6ZdAWx$nknbYKpIKjhcBFrssXMG8/
