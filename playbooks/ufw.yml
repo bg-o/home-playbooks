@@ -1,0 +1,41 @@
+---
+- hosts: all
+  sudo: true
+  tasks:
+    - ufw:
+        state: enabled
+        policy: deny
+        logging: on
+
+    # Sometimes it is desirable to let the sender know when traffic is
+    # being denied, rather than simply ignoring it. In these cases, use
+    # reject instead of deny. In addition, log rejected connections:
+    - ufw:
+        rule: reject
+        port: auth
+        log: yes
+
+    - ufw:
+        rule: limit
+        port: ssh
+        proto: tcp
+
+    # Allow OpenSSH. (Note that as ufw manages its own state, simply removing
+    # a rule=allow task can leave those ports exposed. Either use delete=yes
+    # or a separate state=reset task)
+    - ufw:
+        rule: allow
+        name: OpenSSH
+
+    # Allow all access to tcp port 80:
+    - ufw:
+        rule: allow
+        port: 80
+        proto: tcp
+
+    # Allow all access to tcp port 80:
+    - ufw:
+        rule: allow
+        port: 443
+        proto: tcp
+
