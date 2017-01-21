@@ -1,0 +1,5 @@
+- hosts: dedibox
+  roles:
+    - role: nfs
+      sudo: true
+      nfs_exports: { "/home/mrshoki/downloads *(rw,nohide,insecure,no_subtree_check,sync,anonuid=1000,anongid=1000,all_squash)" }
