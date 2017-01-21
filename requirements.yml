@@ -3,3 +3,5 @@
   name: transmission
 - src: jdauphant.nginx
   name: nginx
+- src: geerlingguy.nfs
+  name: nfs
