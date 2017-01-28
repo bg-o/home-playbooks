@@ -9,3 +9,5 @@
   name: sonarr
 - src: thefinn93.letsencrypt
   name: letsencrypt
+- src: cmacrae.couchpotato
+  name: couchpotato

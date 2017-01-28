@@ -1,0 +1,16 @@
+- hosts: all
+  sudo: true
+  tasks:
+    - user:
+        name: couchpotato
+        comment: "Couchpotato"
+        groups: couchpotato,media
+        state: present
+        append: yes
+  roles:
+    - role: couchpotato
+      couchpotato_user_name: couchpotato
+      couchpotato_group_name: couchpotato
+      couchpotato_library_path: /home/mrshoki/Movies/towatch
+      couchpotato_user_uid: 1007
+      couchpotato_group_gid: 1007

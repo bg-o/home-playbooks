@@ -50,6 +50,7 @@
           }
         - location /transmission { proxy_pass http://transmission; }
         - location /sonarr { proxy_pass http://sonarr; }
+        - location /couchpotato { proxy_pass http://couchpotato; }
 
 # - upstream {
 # transmission:
@@ -63,6 +64,7 @@
       upstream:
         - upstream transmission { server 127.0.0.1:9091; }
         - upstream sonarr { server 127.0.0.1:8989; }
+        - upstream couchpotato { server 127.0.0.1:5050; }
 
 
     nginx_auth_basic_files:
