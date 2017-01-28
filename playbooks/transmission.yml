@@ -8,6 +8,7 @@
       transmission_rpc_auth_required: true
       transmission_rpc_whitelist_enabled: false
       transmission_rpc_whitelist: "127.0.0.1,90.66.144.23"
-      dht-enabled: false
-      lpd_enabled: false
-      pex_enabled: false
+      transmission_dht_enabled: false
+      transmission_watch_dir_enabled: true
+      transmission_lpd_enabled: false
+      transmission_pex_enabled: false
