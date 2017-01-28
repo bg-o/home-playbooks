@@ -1,0 +1,20 @@
+- hosts: all
+  sudo: true
+  tasks:
+    - group:
+        name: sonarr
+        state: present
+    - group:
+       name: media
+       state: present
+    - user:
+        name: sonarr
+        comment: "Sonarr"
+        groups: sonarr,media
+        state: present
+        append: yes
+  roles:
+  - role: sonarr
+    sonarr:
+      sonarr_user_name: sonarr
+      sonarr_group_name: media
