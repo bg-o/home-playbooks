@@ -1,7 +1,11 @@
-# From galaxy 
+# From galaxy
 - src: elboletaire.transmission
   name: transmission
 - src: jdauphant.nginx
   name: nginx
 - src: geerlingguy.nfs
   name: nfs
+- src: git+https://github.com/bg-o/ansible-sonarr.git
+  name: sonarr
+- src: thefinn93.letsencrypt
+  name: letsencrypt
