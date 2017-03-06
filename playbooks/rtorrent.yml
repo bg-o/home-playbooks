@@ -1,0 +1,9 @@
+- hosts: all
+  sudo: true
+  roles:
+    - role: rtorrent
+      rtorrent_user: mrshoki
+      rtorrent_directory_download: "{{ rtorrent_user_home }}/rtorrent/download"
+      rtorrent_directory_session: "{{ rtorrent_user_home }}/rtorrent/session"
+      rtorrent_directory_watch: "{{ rtorrent_user_home }}/rtorrent/watch"
+      rtorrent_peer_exchange: "false"

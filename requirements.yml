@@ -11,3 +11,5 @@
   name: letsencrypt
 - src: cmacrae.couchpotato
   name: couchpotato
+- src: rahul0705.rtorrent
+  name: rtorrent

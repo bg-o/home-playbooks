@@ -22,6 +22,15 @@
         - location / {
              return 301 https://$host$request_uri;
           }
+      rtorrent: 
+        - listen 8008
+        - server_name localhost
+        - location /RPC2 {
+            include scgi_params;
+            scgi_pass unix:/home/mrshoki/rtorrent/rpc.socket;
+            auth_basic "Restricted";
+            auth_basic_user_file  auth_basic/mybo;
+          }
       https:
         - listen 443 ssl
         - server_name mrshokbox.duckdns.org
@@ -51,6 +60,10 @@
         - location /transmission { proxy_pass http://transmission; }
         - location /sonarr { proxy_pass http://sonarr; }
         - location /couchpotato { proxy_pass http://couchpotato; }
+        - location /flood { 
+            rewrite ^/flood/(.*) /$1 break;	
+            proxy_pass http://flood; 
+          }
 
 # - upstream {
 # transmission:
@@ -65,6 +78,7 @@
         - upstream transmission { server 127.0.0.1:9091; }
         - upstream sonarr { server 127.0.0.1:8989; }
         - upstream couchpotato { server 127.0.0.1:5050; }
+        - upstream flood { server 127.0.0.1:3000; }
 
 
     nginx_auth_basic_files:
